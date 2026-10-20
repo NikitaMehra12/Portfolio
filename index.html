@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nikita Mehra — Personal Profile</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="chatbot.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <p class="eyebrow">Personal profile</p>
+      <p class="location">Jaipur, India</p>
+      <button type="button" class="theme-toggle" id="theme-toggle" aria-pressed="false">
+        Dark theme
+      </button>
+    </header>
+
+    <main id="main">
+      <h1>Nikita Mehra</h1>
+      <p class="lede">
+        I'm a CSE (AI-ML) Student Turning Curiosity into Code and Ideas into Reality.
+      </p>
+
+      <section id="about" aria-labelledby="about-heading">
+        <h2 id="about-heading">About</h2>
+        <p>
+          I'm a Computer Science Engineering student specializing in Artificial Intelligence and Machine Learning at JECRC University, passionate about exploring how technology can solve real-world problems. I'm continuously strengthening my programming and problem-solving skills while exploring AI, machine learning, and software development. I enjoy learning by building projects, experimenting with new ideas, and challenging myself to grow beyond the classroom. My goal is to become an AI/ML Engineer who builds meaningful, practical, and intelligent solutions.
+        </p>
+      </section>
+
+      <section id="skills" aria-labelledby="skills-heading">
+        <h2 id="skills-heading">Skills</h2>
+        <ul class="skills-list">
+          <li>1. Python Programming</li>
+          <li>2. Artifical Intelligence</li>
+          <li>3. Machine Learning</li>
+          <li>4. Problem Solving</li>
+          <li>5. Data Structures & Algorithms (DSA)</li>
+        </ul>
+      </section>
+
+      <section id="projects" aria-labelledby="projects-heading">
+        <h2 id="projects-heading">Projects</h2>
+        <ul class="projects-list">
+          <li>
+            <a href="https://PLACEHOLDER-project-one.example">PLACEHOLDER Project One</a>
+            <p>PLACEHOLDER brief description of project one and what you built.</p>
+          </li>
+          <li>
+            <a href="https://PLACEHOLDER-project-two.example">PLACEHOLDER Project Two</a>
+            <p>PLACEHOLDER brief description of project two and what you built.</p>
+          </li>
+          <li>
+            <a href="https://PLACEHOLDER-project-three.example">PLACEHOLDER Project Three</a>
+            <p>PLACEHOLDER brief description of project three and what you built.</p>
+          </li>
+          <li>
+            <a href="https://PLACEHOLDER-project-three.example">PLACEHOLDER Project four/a>
+            <p>PLACEHOLDER brief description of project three and what you built.</p>
+          </li>
+          <li>
+            <a href="https://reading-list-beta-nine.vercel.app/">Reading List - Project five</a>
+            <p>PLACEHOLDER brief description of project three and what you built.</p>
+          </li>
+        </ul>
+      </section>
+    </main>
+
+    <section id="aiChatSection" class="ai-chat">
+      <h2>Ask My AI Assistant</h2>
+    
+      <p>
+        Ask questions about this portfolio,
+        projects, and technologies.
+      </p>
+    
+      <div
+        id="chatMessages"
+        aria-live="polite"
+      ></div>
+    
+      <div class="chat-controls">
+        <input
+          type="text"
+          id="userInput"
+          placeholder="Ask a question..."
+        />
+    
+        <button id="sendButton" type="button">
+          Send
+        </button>
+      </div>
+    
+      <p id="chatStatus" role="status"></p>
+    
+      <p class="chat-note">
+        AI chat is available during the local
+        classroom demonstration only.
+      </p>
+    </section>
+
+    <footer class="site-footer">
+      <p>
+        Contact:.
+        <a href="nikitamehra1207@gmail.com">nikitamehra1207@gmail.com</a>
+      </p>
+      <p>
+        GitHub
+        <a href="https://github.com/NikitaMehra12">NikitaMehra12</a>
+        LinkedIn
+        <a href="www.linkedin.com/in/nikita-mehra-6a15713a3">Nikita Mehra</a>
+      </p>
+      <p class="copyright">© <span id="year"></span> Nikita Mehra</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="config.js"></script>
+    <script src="chatbot.js"></script>
+  </body>
+</html>
