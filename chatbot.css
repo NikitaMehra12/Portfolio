@@ -1,0 +1,275 @@
+/* ==========================================================
+   AI Chat Assistant: redesigned to match the portfolio theme
+   Drop-in replacement for chatbot.css (no HTML/JS changes).
+   Palette is taken from style.css (#203044 / #245b99 / #f5f8fc / #d7e0eb)
+   ========================================================== */
+
+   .ai-chat,
+   #ai-chat,
+   #aiChat {
+     --chat-ink: #203044;
+     --chat-muted: #5f7186;
+     --chat-accent: #245b99;
+     --chat-accent-dark: #1b4a7f;
+     --chat-gold: #a06f1f;
+     --chat-surface: #ffffff;
+     --chat-soft: #f5f8fc;
+     --chat-border: #d7e0eb;
+     --chat-border-strong: #a9b8c9;
+     --chat-radius: 14px;
+     --chat-shadow: 0 10px 30px rgba(32, 48, 68, 0.08);
+   
+     box-sizing: border-box;
+     max-width: 650px;
+     margin: 40px auto;
+     padding: 28px;
+     border: 1px solid var(--chat-border);
+     border-radius: 18px;
+     background: linear-gradient(180deg, #ffffff 0%, var(--chat-soft) 100%);
+     color: var(--chat-ink);
+     font-family: inherit;
+     box-shadow: var(--chat-shadow);
+   }
+   
+   .ai-chat *,
+   #ai-chat *,
+   #aiChat * {
+     box-sizing: border-box;
+   }
+   
+   /* Heading and intro text inside the chat card */
+   .ai-chat h2,
+   .ai-chat h3,
+   #ai-chat h2,
+   #ai-chat h3,
+   #aiChat h2,
+   #aiChat h3 {
+     margin: 0 0 8px;
+     font-size: 0.8rem;
+     font-weight: 700;
+     letter-spacing: 0.14em;
+     text-transform: uppercase;
+     color: var(--chat-gold);
+   }
+   
+   .ai-chat > p,
+   #ai-chat > p,
+   #aiChat > p {
+     margin: 0 0 18px;
+     color: var(--chat-muted);
+     line-height: 1.6;
+   }
+   
+   /* ---------- Message list ---------- */
+   #chatMessages {
+     display: flex;
+     flex-direction: column;
+     gap: 10px;
+     height: 300px;
+     margin: 16px 0;
+     padding: 16px;
+     overflow-y: auto;
+     border: 1px solid var(--chat-border);
+     border-radius: var(--chat-radius);
+     background: var(--chat-surface);
+     scroll-behavior: smooth;
+     scrollbar-width: thin;
+     scrollbar-color: var(--chat-border-strong) transparent;
+   }
+   
+   #chatMessages::-webkit-scrollbar {
+     width: 8px;
+   }
+   
+   #chatMessages::-webkit-scrollbar-thumb {
+     background: var(--chat-border-strong);
+     border-radius: 8px;
+     border: 2px solid var(--chat-surface);
+   }
+   
+   /* ---------- Bubbles ---------- */
+   .chat-message {
+     position: relative;
+     max-width: 85%;
+     width: fit-content;
+     margin: 0;
+     padding: 10px 14px;
+     border-radius: 16px;
+     font-size: 0.95rem;
+     line-height: 1.55;
+     text-align: left;
+     overflow-wrap: anywhere;
+     animation: chat-pop 0.25s ease-out both;
+   }
+   
+   .chat-user {
+     align-self: flex-end;
+     margin-left: auto;
+     background: var(--chat-accent);
+     color: #ffffff;
+     border-bottom-right-radius: 4px;
+     box-shadow: 0 4px 12px rgba(36, 91, 153, 0.22);
+   }
+   
+   .chat-assistant {
+     align-self: flex-start;
+     margin-right: auto;
+     background: var(--chat-soft);
+     color: var(--chat-ink);
+     border: 1px solid var(--chat-border);
+     border-bottom-left-radius: 4px;
+   }
+   
+   .chat-assistant a {
+     color: var(--chat-accent);
+     text-underline-offset: 2px;
+   }
+   
+   @keyframes chat-pop {
+     from {
+       opacity: 0;
+       transform: translateY(6px) scale(0.98);
+     }
+     to {
+       opacity: 1;
+       transform: translateY(0) scale(1);
+     }
+   }
+   
+   /* ---------- Input row ---------- */
+   .chat-controls {
+     display: flex;
+     flex-wrap: wrap;
+     gap: 10px;
+     align-items: stretch;
+   }
+   
+   #userInput {
+     flex: 1 1 180px;
+     min-width: 0;
+     padding: 12px 16px;
+     border: 1px solid var(--chat-border-strong);
+     border-radius: 999px;
+     background: var(--chat-surface);
+     color: var(--chat-ink);
+     font: inherit;
+     font-size: 0.95rem;
+     transition: border-color 0.2s ease, box-shadow 0.2s ease;
+   }
+   
+   #userInput::placeholder {
+     color: #8a99ab;
+   }
+   
+   #userInput:focus {
+     outline: none;
+     border-color: var(--chat-accent);
+     box-shadow: 0 0 0 3px rgba(36, 91, 153, 0.18);
+   }
+   
+   #sendButton {
+     display: inline-flex;
+     align-items: center;
+     justify-content: center;
+     gap: 8px;
+     padding: 12px 22px;
+     border: 0;
+     border-radius: 999px;
+     background: var(--chat-accent);
+     color: #ffffff;
+     font: inherit;
+     font-size: 0.95rem;
+     font-weight: 600;
+     cursor: pointer;
+     transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+   }
+   
+   /* Small arrow icon drawn in CSS, so no HTML change is needed */
+   #sendButton::after {
+     content: "";
+     width: 14px;
+     height: 14px;
+     background: currentColor;
+     -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M13 6l6 6-6 6'/%3E%3C/svg%3E") center / contain no-repeat;
+     mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M13 6l6 6-6 6'/%3E%3C/svg%3E") center / contain no-repeat;
+     transition: transform 0.2s ease;
+   }
+   
+   #sendButton:hover {
+     background: var(--chat-accent-dark);
+     box-shadow: 0 6px 16px rgba(36, 91, 153, 0.28);
+     transform: translateY(-1px);
+   }
+   
+   #sendButton:hover::after {
+     transform: translateX(3px);
+   }
+   
+   #sendButton:active {
+     transform: translateY(0);
+   }
+   
+   #sendButton:focus-visible {
+     outline: 3px solid rgba(36, 91, 153, 0.35);
+     outline-offset: 2px;
+   }
+   
+   #sendButton:disabled {
+     opacity: 0.6;
+     cursor: wait;
+     transform: none;
+     box-shadow: none;
+   }
+   
+   /* ---------- Footnote ---------- */
+   .chat-note {
+     margin: 14px 0 0;
+     font-size: 12px;
+     line-height: 1.5;
+     color: var(--chat-muted);
+   }
+   
+   /* ---------- Responsive ---------- */
+   @media (max-width: 600px) {
+     .ai-chat,
+     #ai-chat,
+     #aiChat {
+       margin: 24px 14px;
+       padding: 20px 16px;
+       border-radius: 16px;
+     }
+   
+     #chatMessages {
+       height: 260px;
+       padding: 12px;
+     }
+   
+     .chat-message {
+       max-width: 92%;
+     }
+   }
+   
+   @media (max-width: 480px) {
+     .chat-controls {
+       flex-direction: column;
+     }
+   
+     #userInput,
+     #sendButton {
+       width: 100%;
+     }
+   }
+   
+   @media (prefers-reduced-motion: reduce) {
+     .chat-message,
+     #sendButton,
+     #sendButton::after,
+     #userInput {
+       animation: none;
+       transition: none;
+     }
+   
+     #chatMessages {
+       scroll-behavior: auto;
+     }
+   }
