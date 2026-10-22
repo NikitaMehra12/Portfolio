@@ -83,3 +83,60 @@
     "Profile page ready. Highlighted " + placeholderCount + " PLACEHOLDER tokens for replacement."
   );
 })();
+
+const cityInput = document.getElementById("cityInput");
+const weatherButton = document.getElementById("weatherButton");
+const weatherResult = document.getElementById("weatherResult");
+const weatherApiKey = "4980fe85ca714dc158edd204de6344d2";
+
+async function getWeather() {
+  const city = cityInput.value.trim();
+
+  if (!city) {
+    weatherResult.textContent = "Please enter a city.";
+    return;
+  }
+
+  weatherResult.textContent = "Loading weather...";
+
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(city)}&appid=${weatherApiKey}&units=metric`;
+
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+
+    if (!response.ok) {
+      if (response.status === 404) {
+        throw new Error("City not found. Check the spelling.");
+      }
+      if (response.status === 401) {
+        throw new Error("API key is invalid or not active yet.");
+      }
+      if (response.status === 429) {
+        throw new Error("Too many requests. Please wait and try again.");
+      }
+      throw new Error(data.message || "Unable to fetch weather. Please try again.");
+    }
+
+    weatherResult.innerHTML =
+      "<h3>" + data.name + "</h3>" +
+      "<p>Temperature: " + data.main.temp + "°C</p>" +
+      "<p>Condition: " + data.weather[0].description + "</p>";
+  } catch (error) {
+    weatherResult.textContent = error.message ||
+      "Unable to fetch weather. Please try again.";
+    console.error(error);
+  }
+}
+
+if (weatherButton) {
+  weatherButton.addEventListener("click", getWeather);
+}
+
+if (cityInput) {
+  cityInput.addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+      getWeather();
+    }
+  });
+}
